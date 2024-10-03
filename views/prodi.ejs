@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h1 class="text-center">Data Program Studi</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Program Studi</th>
+          <th>Fakultas</th>
+          <th>Singkatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% prodi.forEach(item => { %>
+          <tr>
+            <td><%= item.prodi %></td>
+            <td><%= item.fakultas %></td>
+            <td><%= item.singkatan %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  

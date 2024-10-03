@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
 <ul>
-  <% dosen.forEach(function(item) { %>
-    <li>Nama: <%= item.nama %> - Mata Kuliah: <%= item.matkul %></li>
-  <% }) %>
+  <% dosen.forEach(function(d) { %>
+    <li><%= d.nama %> - Mata Kuliah: <%= d.matkul %></li>
+  <% }); %>
 </ul>

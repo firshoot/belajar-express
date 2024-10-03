@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
 <ul>
-  <% mahasiswa.forEach(function(item) { %>
-    <li><%= item.nama %> - NPM: <%= item.npm %></li>
-  <% }) %>
+  <% mahasiswa.forEach(function(m) { %>
+    <li><%= m.nama %> (NPM: <%= m.npm %>)</li>
+  <% }); %>
 </ul>

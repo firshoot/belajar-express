@@ -3,29 +3,36 @@ const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const port = 3000;
 
+// Mengatur views dan view engine
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
+// Menggunakan express-ejs-layouts untuk layout default
 app.use(expressLayouts);
-app.set("layout", "layout"); // Use layout.ejs as default layout
+app.set("layout", "layout"); // Gunakan layout.ejs sebagai layout default
 
-// Route for home page
+// Tempat untuk file statis (gambar, CSS, dll.)
+app.use(express.static('public'));
+
+// Route untuk halaman home
 app.get("/", (req, res) => {
   res.render("index", { title: "Universitas Multi Data Palembang" });
 });
 
-// Route for Prodi page
+// Route untuk halaman Prodi
 app.get("/prodi", (req, res) => {
-  const prodiList = [
-    { name: "Sistem Informasi", fakultas: "FIKR", singkatan: "SI" },
-    { name: "Informatika", fakultas: "FIKR", singkatan: "IF" },
-    { name: "Teknik Elektro", fakultas: "FIKR", singkatan: "TE" },
-    { name: "Akuntansi", fakultas: "FEB", singkatan: "AK" },
-  ];
-  res.render("prodi", { title: "Program Studi", prodi: prodiList });
+    const prodi = [
+      { prodi: "Sistem Informasi", fakultas: "FIKR", singkatan: "SI" },
+      { prodi: "Informatika", fakultas: "FIKR", singkatan: "IF" },
+      { prodi: "Teknik Elektro", fakultas: "FIKR", singkatan: "TE" },
+      { prodi: "Manajemen Informatika", fakultas: "FIKR", singkatan: "MI" },
+      { prodi: "Manajemen", fakultas: "FEB", singkatan: "MJ" },
+      { prodi: "Akuntansi", fakultas: "FEB", singkatan: "AK" },
+    ];
+    res.render("prodi", { title: "Data Prodi", prodi });
 });
 
-// Route for Mahasiswa page
+// Route untuk halaman Mahasiswa
 app.get("/mahasiswa", (req, res) => {
   const mahasiswaList = [
     { npm: "2226240011", nama: "Andre" },
@@ -35,7 +42,7 @@ app.get("/mahasiswa", (req, res) => {
   res.render("mahasiswa", { title: "Data Mahasiswa", mahasiswa: mahasiswaList });
 });
 
-// Route for Dosen page
+// Route untuk halaman Dosen
 app.get("/dosen", (req, res) => {
   const dosenList = [
     { nama: "Dr. Johan", matkul: "Pemrograman Web" },
@@ -45,12 +52,12 @@ app.get("/dosen", (req, res) => {
   res.render("dosen", { title: "Data Dosen", dosen: dosenList });
 });
 
-// Route for Contact page
+// Route untuk halaman Kontak
 app.get("/contact", (req, res) => {
   res.render("contact", { title: "Kontak Kami" });
 });
 
-// Route for About page
+// Route untuk halaman Tentang Kami
 app.get("/about", (req, res) => {
   res.render("about", { title: "Tentang Kami" });
 });
@@ -60,7 +67,7 @@ app.use((req, res) => {
   res.status(404).render("404", { title: "404 - Halaman Tidak Ditemukan" });
 });
 
-// Start the server
+// Menjalankan server
 app.listen(port, () => {
-  console.log(`App running at http://localhost:${port}`);
+  console.log(`Aplikasi berjalan di http://localhost:${port}`);
 });
